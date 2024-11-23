@@ -1,0 +1,14 @@
+{
+    "listening": "Listening....",
+    "recognizing": "Recognizing....",
+    "user_said": "User said: ",
+    "please_try_again": "Please try again.",
+    "ask_preference": "Which mode do you want to use: WhatsApp or Mobile?",
+    "ask_message": "What message do you want to send?",
+    "open_command": "Open",
+    "ASSISTANT_NAME": "Jarvis",
+    "START_SOUND": "start_sound.mp3",
+    "CALLING_MESSAGE": "Calling to",
+    "SEND_MESSAGE_SUCCESS": "Message sent successfully to",
+    "VIDEO_CALL": "Starting video call with"
+}

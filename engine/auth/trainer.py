@@ -2,17 +2,19 @@ import cv2
 import numpy as np
 from PIL import Image #pillow package
 import os
+from pathlib import Path
 
 path = 'engine\\auth\\samples' # Path for samples already taken
 
 recognizer = cv2.face.LBPHFaceRecognizer_create() # Local Binary Patterns Histograms
-detector = cv2.CascadeClassifier("engine\\auth\\haarcascade_frontalface_default.xml")
+cascade_path = Path('engine') / 'auth' / 'haarcascade_frontalface_default.xml'
+detector = cv2.CascadeClassifier(str(cascade_path))
 #Haar Cascade classifier is an effective object detection approach
 
 
 def Images_And_Labels(path): # function to fetch the images and labels
 
-    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
+    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]
     faceSamples=[]
     ids = []
 
@@ -35,6 +37,10 @@ print ("Training faces. It will take a few seconds. Wait ...")
 faces,ids = Images_And_Labels(path)
 recognizer.train(faces, np.array(ids))
 
-recognizer.write('engine\\auth\\trainer\\trainer.yml')  # Save the trained model as trainer.yml
+# Define la ruta del archivo de salida de manera compatible con ambos sistemas operativos
+trainer_path = Path('engine') / 'auth' / 'trainer' / 'trainer.yml'
+
+# Guardar el modelo entrenado
+recognizer.write(str(trainer_path))  # Convertir el Path a string
 
 print("Model trained, Now we can recognize your face.")
